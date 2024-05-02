@@ -1,6 +1,6 @@
 import 'package:diet_app/configs/configs.dart';
 import 'package:diet_app/pages/Homepage.dart';
-import 'package:diet_app/pages/OverviewPage.dart';
+import 'package:diet_app/widgets/LandingPage/SlideBar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:slide_to_act/slide_to_act.dart';
@@ -14,21 +14,19 @@ class LandingPage extends StatelessWidget {
         backgroundColor: appBackgroundColor,
         body: Container(
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(
-                  'lib\\assets\\images\\landing.jpg',
-                ),
-                fit: BoxFit.cover,
-                opacity: 0.7),
+              image: AssetImage('lib\\assets\\images\\landing.jpg'),
+              fit: BoxFit.cover,
+              opacity: 0.7,
+            ),
           ),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.black, Colors.black54],
-                begin: Alignment.bottomCenter,
-                end: Alignment.center
-              ),
+                  colors: [Colors.black, Colors.black54],
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.center),
             ),
             child: SafeArea(
               child: Padding(
@@ -53,7 +51,9 @@ class LandingPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ConstrainedBox(
-                          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width* 0.7),
+                          constraints: BoxConstraints(
+                              maxWidth:
+                                  MediaQuery.of(context).size.width * 0.7),
                           child: Text(
                             "Fuel Your Day Plan Your Way",
                             style: GoogleFonts.quicksand(
@@ -63,39 +63,18 @@ class LandingPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 30,),
+                        SizedBox(
+                          height: 30,
+                        ),
                         Container(
                           width: MediaQuery.of(context).size.width,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            // color: const Color.fromARGB(255, 189, 85, 0),
-                            borderRadius: BorderRadius.circular(50)
-                          ),
-                          // child: TextButton(
-                          //   onPressed: () {
-                          //     Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
-                          //   },
-                          //   child: Text(
-                          //     "Get started",
-                          //     style: GoogleFonts.montserrat(
-                          //       color: Colors.white,
-                          //       fontSize: 20,
-                          //       // fontWeight: FontWeight.bold
-                          //     ),
-                          //   ),
-                          // ),
-                          child: SlideAction(
-                            text: "Get started",
-                            innerColor: const Color.fromARGB(255, 189, 85, 0),
-                            outerColor: sliderBackgroundColor.withOpacity(0.5),
-                            sliderButtonIcon: Icon(Icons.arrow_forward, color: Colors.white,),
-                            sliderRotate: false,
-                            onSubmit: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage()));
-                            },
-                          ),
+                          height: 100,
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(50)),
+                          child: SlideBar()
                         ),
-                        SizedBox(height: 20,)
+                        const SizedBox(
+                          height: 20,
+                        )
                       ],
                     ),
                   ],

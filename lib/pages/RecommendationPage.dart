@@ -1,7 +1,6 @@
 import 'package:diet_app/statics.dart';
 import 'package:diet_app/widgets/FoodCard.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class RecommendationPage extends StatelessWidget {
   RecommendationPage({super.key});

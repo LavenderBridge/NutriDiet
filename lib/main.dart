@@ -1,4 +1,5 @@
 import 'package:diet_app/configs/routes.dart';
+import 'package:diet_app/controllers/SupabaseController.dart';
 import 'package:diet_app/pages/LandingPage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,8 +15,20 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  var controller = Get.put(SupabaseController());
+  void initState() {
+    controller.fetchdata();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

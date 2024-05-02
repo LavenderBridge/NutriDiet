@@ -31,7 +31,7 @@ class OverviewCard_small_glucose extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Calorie Intake",
+                        "Glucose Levels",
                         style: GoogleFonts.lato(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
@@ -42,15 +42,15 @@ class OverviewCard_small_glucose extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                "23%",
+                                "31%",
                                 style: GoogleFonts.lato(
-                                    color: Colors.green,
+                                    color: Colors.red,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 32),
                               ),
                               Icon(
-                                (Icons.arrow_upward),
-                                color: Colors.green,
+                                (Icons.arrow_downward),
+                                color: Colors.red,
                                 size: 25,
                               ),
                             ],
