@@ -13,15 +13,16 @@ class AddMealPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
-      child: Container(
-          width: Get.width,
-          // height: Get.height,
-          // color: Colors.orange,
-          child: _dataController.currentMeal.isEmpty
-              ? AddNewPageBlank()
-              : ShowSelectedMeals()),
-    );
+        padding: const EdgeInsets.all(15.0),
+        child: Obx(() {
+          return Container(
+              width: Get.width,
+              // height: Get.height,
+              // color: Colors.orange,
+              child: _dataController.currentMeal.isEmpty
+                  ? AddNewPageBlank()
+                  : ShowSelectedMeals());
+        }));
   }
 }
 
@@ -51,14 +52,50 @@ class ShowSelectedMeals extends StatelessWidget {
             itemCount: _dataController.currentMeal.length,
             itemBuilder: (context, index) {
               print("INDEX IS: $index");
-              return Card(
-                color: sliderBackgroundColor,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 15.0),
-                  child: Text(
-                    _dataController.currentMeal.value[index]['Food'],
-                    style: GoogleFonts.lato(color: Colors.white, fontSize: 20),
+              return Dismissible(
+                key: UniqueKey(),
+                // background: Container(color: Colors.red[200], width: Get.width,),
+                confirmDismiss: (direction) {
+                  return showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: sliderBackgroundColor,
+                        title: Text(
+                            "Are you sure you want to remove this ingredient?"),
+                        titleTextStyle: GoogleFonts.lato(color: Colors.white),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Get.back(),
+                              child: Text(
+                                "No",
+                                style: GoogleFonts.lato(color: Colors.white),
+                              )),
+                          TextButton(
+                              onPressed: () {
+                                _dataController.currentMeal.removeAt(index);
+                                _dataController.update();
+                                Get.back();
+                              },
+                              child: Text(
+                                "Yes",
+                                style: GoogleFonts.lato(color: Colors.white),
+                              ))
+                        ],
+                      );
+                    },
+                  );
+                },
+                child: Card(
+                  color: sliderBackgroundColor,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 15.0),
+                    child: Text(
+                      _dataController.currentMeal.value[index]['Food'],
+                      style:
+                          GoogleFonts.lato(color: Colors.white, fontSize: 20),
+                    ),
                   ),
                 ),
               );
@@ -80,7 +117,15 @@ class ShowSelectedMeals extends StatelessWidget {
                       color: Colors.orange,
                     ),
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _dataController.currentMeal.clear();
+                          Get.snackbar(
+                            "Added meal",
+                            "Custom meal added successfully",
+                            snackPosition: SnackPosition.TOP,
+                            backgroundColor: Colors.green[100],
+                          );
+                        },
                         child: Text(
                           "Submit",
                           style: GoogleFonts.lato(color: Colors.white),

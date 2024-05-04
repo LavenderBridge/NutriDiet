@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class OverviewCard_small_calorie extends StatelessWidget {
-  const OverviewCard_small_calorie({super.key});
+class OverviewCard_small_glucose extends StatelessWidget {
+  const OverviewCard_small_glucose({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +31,11 @@ class OverviewCard_small_calorie extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Calorie Intake",
+                        "Glucose Levels",
                         style: GoogleFonts.lato(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
+                      Icon(Icons.medical_information, size: 30, color: Colors.black54,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -42,15 +43,15 @@ class OverviewCard_small_calorie extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                "23%",
+                                "31%",
                                 style: GoogleFonts.lato(
-                                    color: Colors.green,
+                                    color: Colors.red,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 32),
                               ),
                               Icon(
-                                (Icons.arrow_upward),
-                                color: Colors.green,
+                                (Icons.arrow_downward),
+                                color: Colors.red,
                                 size: 25,
                               ),
                             ],
@@ -58,7 +59,7 @@ class OverviewCard_small_calorie extends StatelessWidget {
                           ConstrainedBox(
                             constraints: BoxConstraints(maxWidth: Get.width * 0.3),
                             child: Text(
-                              "You are within range. Well done!",
+                              "Your glucose levels have spiked more",
                               style: GoogleFonts.lato(
                                   color: Colors.black87, fontSize: 12),
                             ),

@@ -45,7 +45,7 @@ class CustomBottomBar2 extends StatelessWidget {
                   BottomNavigationBarItem(
                       backgroundColor: Colors.transparent,
                       icon: Icon(Icons.favorite, color: appBackgroundColor),
-                      label: "Saved"),
+                      label: "Doctors"),
                   BottomNavigationBarItem(
                       backgroundColor: Colors.transparent,
                       icon: Icon(Icons.person, color: appBackgroundColor),

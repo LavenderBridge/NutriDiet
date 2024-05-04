@@ -23,7 +23,7 @@ class _SupabaseStreamState extends State<SupabaseStream> {
   Widget build(BuildContext context) {
 
     var allData = _dataController.data;
-    var data = widget.renderList;
+    var renderData = widget.renderList;
 
     
     return Flexible(
@@ -31,18 +31,25 @@ class _SupabaseStreamState extends State<SupabaseStream> {
             child: ListView.builder(
               // shrinkWrap: true,
               // physics: NeverScrollableScrollPhysics(),
-              itemCount: data.length,
+              itemCount: renderData.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal :10.0, vertical: 2),
                   child: ListTile(
                     onTap: () {
+                      Map<String, dynamic> selectedData = allData[0];
+                      for (int i = 0; i < allData.length; i++){
+                        if (allData[i]['Food'] == renderData[index]){
+                          selectedData = (allData[i]);
+                        }
+                      }
+                      print("SELECTED DATA: ${selectedData['Food']}");
                       showDialog(
                         useRootNavigator: false,
                         context: context, builder: (context){
                         return AlertDialog(
                           backgroundColor: appBackgroundColor,
-                          title: Text(data[index], style: GoogleFonts.lato(color: Colors.white),),
+                          title: Text(selectedData['Food'], style: GoogleFonts.lato(color: Colors.white),),
                           content: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,19 +57,19 @@ class _SupabaseStreamState extends State<SupabaseStream> {
                               Row(
                                 children: [
                                   Text("Category : ", style: GoogleFonts.lato(color: Colors.white),),
-                                  Text(allData[index]['Category'], style: GoogleFonts.lato(color: Colors.white),),
+                                  Text(selectedData['Category'], style: GoogleFonts.lato(color: Colors.white),),
                                 ],
                               ),
                               Row(
                                 children: [
                                   Text("Grams : ", style: GoogleFonts.lato(color: Colors.white),),
-                                  Text(allData[index]['Grams'], style: GoogleFonts.lato(color: Colors.white),),
+                                  Text(selectedData['Grams'], style: GoogleFonts.lato(color: Colors.white),),
                                 ],
                               ),
                               Row(
                                 children: [
                                   Text("Calories : ", style: GoogleFonts.lato(color: Colors.white),),
-                                  Text(allData[index]['Calories'], style: GoogleFonts.lato(color: Colors.white),),
+                                  Text(selectedData['Calories'], style: GoogleFonts.lato(color: Colors.white),),
                                 ],
                               ),
                             ],
@@ -70,7 +77,7 @@ class _SupabaseStreamState extends State<SupabaseStream> {
                           actions: [
                             TextButton(onPressed: () => Navigator.of(context).pop(), child: Text("Cancel", style: GoogleFonts.lato(color: Colors.white))),
                             TextButton(onPressed: () {
-                              _dataController.currentMeal.value.add(allData[index]);
+                              _dataController.currentMeal.value.add(selectedData);
                               _dataController.currentMeal.refresh();
                               Navigator.of(context).pop();
                             }, child: Text("Add Item", style: GoogleFonts.lato(color: Colors.white))),
@@ -80,7 +87,7 @@ class _SupabaseStreamState extends State<SupabaseStream> {
                     },
                     tileColor: sliderBackgroundColor,
                     title: Text(
-                      data[index],
+                      renderData[index],
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

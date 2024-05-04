@@ -11,7 +11,7 @@ class SupabaseController extends GetxController{
   Future<void> fetchdata() async {
     var response = await Supabase.instance.client
         .from('food_data')
-        .select();
+        .select().whenComplete(() => print("DATA SUCCESSFULLY RETREIVED"));
     data = response;
     for (var i in data) {
       names_data.add(i['Food']);

@@ -1,5 +1,6 @@
 import 'package:diet_app/widgets/OverviewPage/OverviewCard/OverviewCard_calorie.dart';
 import 'package:diet_app/widgets/OverviewPage/OverviewCard/OverviewCard_glucose.dart';
+import 'package:diet_app/widgets/OverviewPage/OverviewCard/OverviewCard_steps.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ class OverviewCardSlider extends StatelessWidget {
   final List<Widget> _topSliderCards = const [
                     OverviewCard_calorie(),
                     OverviewCard_glucose(),
-                    OverviewCard_calorie(),
+                    OverviewCard_steps(),
                   ];
 
   @override

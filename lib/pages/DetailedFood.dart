@@ -10,7 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class DetailedFood extends StatelessWidget {
   final int index;
-  const DetailedFood({super.key, required this.index});
+  final String title;
+  const DetailedFood({super.key, required this.index, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +36,12 @@ class DetailedFood extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      homeTitles[index],
+                      title,
                       style: GoogleFonts.quicksand(
                           color: Colors.white, fontSize: 60, height: 1),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
                       child: Text(
                         "150 of 300 Calories",
                         style: GoogleFonts.quicksand(
@@ -54,7 +55,7 @@ class DetailedFood extends StatelessWidget {
                 ),
                 FoodCard_DetailedFoodPage(
                   bgImage: bgImageList[index],
-                  title: homeTitles[index],
+                  title: recommendationTitles[index],
                 ),
                 SizedBox(
                   height: 20,

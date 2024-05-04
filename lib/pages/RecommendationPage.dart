@@ -1,6 +1,9 @@
+import 'package:diet_app/pages/DetailedFood.dart';
 import 'package:diet_app/statics.dart';
 import 'package:diet_app/widgets/FoodCard.dart';
+import 'package:diet_app/widgets/FoodCard_DetailedFoodPage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class RecommendationPage extends StatelessWidget {
   RecommendationPage({super.key});
@@ -19,19 +22,33 @@ class RecommendationPage extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: recommendationTitles.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: FoodCard(
-                  bgImage: bgImageList[index],
-                  title: recommendationTitles[index],
-                ),
-              );
-            }),
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: recommendationTitles.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  child: TextButton(
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.zero)),
+                    onPressed: () {
+                      Get.to(DetailedFood(
+                          index: index, title: recommendationTitles[index]));
+                    },
+                    child: FoodCard(
+                      bgImage: bgImageList[index],
+                      title: recommendationTitles[index],
+                    ),
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 100,)
+          ],
+        ),
       ),
     );
   }

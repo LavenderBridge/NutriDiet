@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class OverviewCard_small_glucose extends StatelessWidget {
-  const OverviewCard_small_glucose({super.key});
+class OverviewCard_small_calorie extends StatelessWidget {
+  const OverviewCard_small_calorie({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,10 @@ class OverviewCard_small_glucose extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
-            BoxShadow(blurRadius: 8, spreadRadius: 1, color: Colors.black.withOpacity(0.2)),
+            BoxShadow(
+                blurRadius: 8,
+                spreadRadius: 1,
+                color: Colors.black.withOpacity(0.2)),
           ],
         ),
         child: Padding(
@@ -24,17 +27,18 @@ class OverviewCard_small_glucose extends StatelessWidget {
           child: Row(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "Glucose Levels",
+                        "Calorie Intake",
                         style: GoogleFonts.lato(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
+                      Icon(Icons.restaurant_menu, size: 30, color: Colors.black54,),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -42,23 +46,24 @@ class OverviewCard_small_glucose extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                "31%",
+                                "23%",
                                 style: GoogleFonts.lato(
-                                    color: Colors.red,
+                                    color: Colors.green,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 32),
                               ),
                               Icon(
-                                (Icons.arrow_downward),
-                                color: Colors.red,
+                                (Icons.arrow_upward),
+                                color: Colors.green,
                                 size: 25,
                               ),
                             ],
                           ),
                           ConstrainedBox(
-                            constraints: BoxConstraints(maxWidth: Get.width * 0.3),
+                            constraints:
+                                BoxConstraints(maxWidth: Get.width * 0.3),
                             child: Text(
-                              "You are within range. Well done!",
+                              "Your average calorie intake has increased",
                               style: GoogleFonts.lato(
                                   color: Colors.black87, fontSize: 12),
                             ),

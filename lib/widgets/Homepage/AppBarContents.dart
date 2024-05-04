@@ -24,7 +24,7 @@ class AppBarContents extends StatelessWidget {
               "NutriDiet",
               "Recommendations",
               "Custom Meal",
-              "Saved Dishes",
+              "Browse Nutritionists",
               "Your Profile"
             ][_bottomBarController.currentIndex.value],
             style: GoogleFonts.montserrat(

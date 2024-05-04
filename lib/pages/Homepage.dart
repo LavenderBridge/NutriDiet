@@ -1,10 +1,10 @@
 import 'package:diet_app/configs/configs.dart';
 import 'package:diet_app/controllers/CustomBottomBarController.dart';
-import 'package:diet_app/data_processing/SupabaseStream.dart';
 import 'package:diet_app/pages/AddMealPage.dart';
+import 'package:diet_app/pages/BrowseDoctorsPage.dart';
 import 'package:diet_app/pages/OverviewPage.dart';
+import 'package:diet_app/pages/ProfilePage.dart';
 import 'package:diet_app/pages/RecommendationPage.dart';
-import 'package:diet_app/pages/SwipeRecommendationPage.dart';
 import 'package:diet_app/widgets/Homepage/CustomBottomBar2.dart';
 import 'package:diet_app/widgets/Homepage/AppBarContents.dart';
 import 'package:diet_app/widgets/Homepage/CustomEndDrawer.dart';
@@ -21,8 +21,8 @@ class HomePage extends StatelessWidget {
     // const SwipeRecommendationPage(),
     // SupabaseStream(),
     AddMealPage(),
-    const Placeholder(color: Colors.red),
-    const Placeholder(color: Colors.red),
+    BrowseDoctorsPage(),
+    const ProfilePage(),
   ];
 
   @override

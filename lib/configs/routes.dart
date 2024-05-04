@@ -9,7 +9,7 @@ List<GetPage> GetPages = [
         GetPage(name: '/landing', page: () => LandingPage()),
         GetPage(name: '/home', page: () =>  HomePage()),
         GetPage(name: '/explore', page: () => RecommendationPage()),
-        GetPage(name: '/detailedfood', page: () => DetailedFood(index: Get.arguments[0]))
+        // GetPage(name: '/detailedfood', page: () => DetailedFood(index: Get.arguments[0], title: Get.arguments[1],))
         // GetPage(name: '/third', page: () => Third()),
         // GetPage(name: "/fourth", page: () => Fourth()),
       ];

@@ -1,5 +1,9 @@
-import 'package:diet_app/widgets/OverviewCard_small/OverviewCard_small_calorie.dart';
-import 'package:diet_app/widgets/OverviewCard_small/OverviewCard_small_glucose.dart';
+import 'package:diet_app/widgets/OverviewPage/OverviewCard_small/OverviewCard_small_breathing.dart';
+import 'package:diet_app/widgets/OverviewPage/OverviewCard_small/OverviewCard_small_calorie.dart';
+import 'package:diet_app/widgets/OverviewPage/OverviewCard_small/OverviewCard_small_distance.dart';
+import 'package:diet_app/widgets/OverviewPage/OverviewCard_small/OverviewCard_small_glucose.dart';
+import 'package:diet_app/widgets/OverviewPage/OverviewCard_small/OverviewCard_small_steps%20copy.dart';
+import 'package:diet_app/widgets/OverviewPage/OverviewCard_small/OverviewCard_small_workout.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,7 +28,6 @@ class OverviewCardGrid extends StatelessWidget {
                     ),
                   ),
                   GridView(
-                    
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -33,10 +36,10 @@ class OverviewCardGrid extends StatelessWidget {
                     children: const [
                       OverviewCard_small_calorie(),
                       OverviewCard_small_glucose(),
-                      OverviewCard_small_glucose(),
-                      OverviewCard_small_calorie(),
-                      OverviewCard_small_glucose(),
-                      OverviewCard_small_glucose(),
+                      OverviewCard_small_steps(),
+                      OverviewCard_small_distance(),
+                      OverviewCard_small_workout(),
+                      OverviewCard_small_breathing(),
                     ],
                   ),
                   SizedBox(height: 70,)

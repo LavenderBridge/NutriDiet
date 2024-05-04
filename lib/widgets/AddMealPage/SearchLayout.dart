@@ -3,6 +3,7 @@ import 'package:diet_app/controllers/SupabaseController.dart';
 import 'package:diet_app/data_processing/SupabaseStream.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SearchLayout extends StatefulWidget {
   SearchLayout({super.key});
@@ -48,15 +49,34 @@ class _SearchLayoutState extends State<SearchLayout> {
           decoration: BoxDecoration(
               color: sliderBackgroundColor,
               borderRadius: BorderRadius.circular(20)),
-          child: TextField(
-            controller: _searchBoxController,
-            decoration: InputDecoration(border: InputBorder.none),
-            onChanged: (value) {
-              _filterList(value);
-            },
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: TextField(
+              // autofillHints: _dataController.names_data,
+              style: GoogleFonts.lato(color: Colors.white),
+              controller: _searchBoxController,
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: "Search here",
+                  hintStyle: GoogleFonts.lato(color: Colors.white24)),
+              onChanged: (value) {
+                _filterList(value);
+              },
+            ),
           ),
         ),
-        SupabaseStream(renderList: data),
+        SizedBox(height: 10,),
+        data.length == 0
+            ? Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30),
+              child: Text(
+                  "No results found",
+                  style: GoogleFonts.montserrat(
+                    color: Colors.white54,
+                  ),
+                ),
+            )
+            : SupabaseStream(renderList: data),
       ],
     );
   }

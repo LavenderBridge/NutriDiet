@@ -75,6 +75,8 @@ flutter:
     - lib\assets\images\breakfast_bg.jpg
     - lib\assets\images\lunch_bg.jpg
     - lib\assets\images\dinner_bg.jpg
+    - lib\assets\images\profile.jpg
+    - lib\assets\images\doctor.jpg
     # - lib\assets\images\explore_img\
   #   - images/a_dot_ham.jpeg
 
